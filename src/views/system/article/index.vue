@@ -114,7 +114,7 @@
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="articleList" @selection-change="handleSelectionChange">
+    <el-table v-loading="loading" :data="articleList" @selection-change="handleSelectionChange" >
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="主键id" align="center" prop="id" />
       <el-table-column label="标签名称" align="center" prop="title" />
@@ -136,7 +136,7 @@
       </el-table-column>
       <el-table-column label="浏览量" align="center" prop="pageView" />
       <el-table-column label="文章简介" align="center" prop="introduction" />
-      <el-table-column label="富文本框,包含图文" align="center" prop="imageText" />
+      <el-table-column label="富文本框,包含图文" align="center" prop="imageText"  />
       <el-table-column label="点赞量" align="center" prop="pageLike" />
       <el-table-column label="收藏量" align="center" prop="pageCollect" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -275,8 +275,10 @@ export default {
       }
     };
   },
-  created() {
-    this.getList();
+ created() {
+    this.getList()
+
+
   },
   methods: {
     /** 查询药品资讯信息列表 */
@@ -291,6 +293,7 @@ export default {
         this.articleList = response.rows;
         this.total = response.total;
         this.loading = false;
+
       });
     },
     // 取消按钮
